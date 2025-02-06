@@ -1,0 +1,11 @@
+com\example\wallpaperservice\services\MongoAtlasRepo.class
+demo.class
+com\example\wallpaperservice\services\LocalServices.class
+com\example\wallpaperservice\config\SpringFoxConfig.class
+com\example\wallpaperservice\web\MongoController.class
+com\example\wallpaperservice\web\PhotoEntry.class
+com\example\wallpaperservice\utils\Utils.class
+com\example\wallpaperservice\web\Controller.class
+com\example\wallpaperservice\WallpaperserviceApplication.class
+com\example\wallpaperservice\web\ShortDescPhoto.class
+com\example\wallpaperservice\services\CloudStorageService.class
