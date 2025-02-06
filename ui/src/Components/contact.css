@@ -1,0 +1,130 @@
+.contact {
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+}
+
+.contact .left{
+    flex: 1;
+}
+
+.contact .left img{
+    margin-left: 0;
+    height: 50rem;
+}
+
+.contact .right{
+    margin: 0;
+    max-width: 50%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+}
+
+.contact .right div{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 70%;
+}
+
+.contact .right .title2{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact .right label{
+    font-size: 1rem;
+    margin-bottom: .5rem;
+}
+
+.contact .right input{
+    width: 95%;
+    margin: 0;
+    border: 1px white solid;
+    padding: .8rem;
+    color: white;
+    font-size: 1.1rem;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.contact .right textarea{
+    width: 95%;
+    border: 1px white solid;
+    padding: .8rem;
+    color: white;
+    font-size: 1.1rem;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.contact .right button{
+    margin-top: 1rem;
+    font-weight: 600;
+    min-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #f4d35e;
+    padding: .7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact .right button:active{
+    background-color: #fff2c2;
+}
+
+@media screen and (max-width: 960px) {
+    .contact{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .contact .left {
+        max-height: 14rem;
+        min-width: 100%;
+        overflow: hidden;
+        margin-top: 3rem;
+        margin-bottom: 0rem;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        background-color: red;
+    }
+
+    .contact .left img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .contact .right{
+        margin-top: 3rem;
+        min-width: 100%;
+        padding: 0;
+    }
+
+    .contact .right input{
+        width: 90%;
+    }
+
+    .contact .right textarea{
+        width: 90%;
+    }
+
+    .contact .right div{
+        width: 80%;
+    }
+}

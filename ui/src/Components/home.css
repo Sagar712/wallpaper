@@ -1,0 +1,64 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  padding-top: 5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.home .imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.home img {
+  height: 15rem;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.home img:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+}
+
+.about_in_home {
+  color: white;
+  margin-bottom: -1rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 960px) {
+  .home {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .home .imageContainer {
+    margin-top: 2rem;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .home img {
+    height: 10rem;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .home img:hover {
+    transform: scale(1);
+  }
+}

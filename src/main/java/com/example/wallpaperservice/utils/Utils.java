@@ -14,4 +14,30 @@ public class Utils {
         }
         return sb.toString();
     }
+
+    public static String findLengthInKbMb(String sizeInMb){
+        if(sizeInMb.length() < 7)
+            return sizeInMb+" MB";
+        if(sizeInMb.startsWith("0.")){
+            return sizeInMb.substring(2, 5)+" KB";
+        }
+        else{
+            StringBuilder str1 = new StringBuilder();
+            boolean found = false;
+            for(char c : sizeInMb.toCharArray()){
+                if(found){
+                    str1.append(c);
+                    break;
+                }
+                if(c != '.'){
+                    str1.append(c);
+                }
+                else{
+                    str1.append(c);
+                    found = true;
+                }
+            }
+            return str1+" MB";
+        }
+    }
 }

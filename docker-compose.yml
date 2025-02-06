@@ -14,10 +14,16 @@ services:
     ports:
       - "27017:27017"
 
+  ui:
+    build: ./ui
+    container_name: wallpaper_ui
+    ports:
+      - "80:3000"
+
   springboot:
     build: .
     container_name: wallpaper_service
     depends_on:
       - mongodb
     ports:
-      - "80:8088"
+      - "8088:8088"

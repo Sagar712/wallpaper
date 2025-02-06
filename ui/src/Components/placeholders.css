@@ -1,0 +1,17 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 960px) {
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .placeholder p {
+    font-size: .9rem;
+  }
+}

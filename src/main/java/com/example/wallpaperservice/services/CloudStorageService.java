@@ -67,5 +67,15 @@ public class CloudStorageService {
         }
         return true;
     }
+    public PhotoEntry findPhotoById(String id){
+        try{
+            Optional<PhotoEntry> pic_exists = mongoAtlasRepo.findById(id);
+            if(!pic_exists.isEmpty())
+                return pic_exists.get();
+        }catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 
 }

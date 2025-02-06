@@ -1,6 +1,7 @@
 package com.example.wallpaperservice.web;
 
 import com.example.wallpaperservice.services.CloudStorageService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
+
+import static com.example.wallpaperservice.utils.Utils.findLengthInKbMb;
 
 @RestController
 @RequestMapping("/data")
@@ -56,7 +57,7 @@ public class MongoController {
         for(PhotoEntry picObj: allImagesObj){
             allImages.add(Base64.getEncoder().encodeToString(picObj.getMedia()));
         }
-        return new ResponseEntity<>(allImages, HttpStatus.OK);
+        return new ResponseEntity<>(allImages.reversed(), HttpStatus.OK);
     }
 
     @GetMapping("/getAll")
@@ -69,7 +70,28 @@ public class MongoController {
             // Need to encode all byte[] to send as response!
             allImages.add(Base64.getEncoder().encodeToString(picObj.getMedia()));
         }
-        return new ResponseEntity<>(allImagesObj, HttpStatus.OK);
+        return new ResponseEntity<>(allImagesObj.reversed(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getIds")
+    ResponseEntity<List<ShortDescPhoto>> getAllImagesDescription(HttpServletRequest request){
+        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        List<PhotoEntry> allImagesObj = cloudStorageService.getAllPhotos();
+        List<ShortDescPhoto> allImages = new ArrayList<>();
+        for(PhotoEntry picObj: allImagesObj){
+            String len = findLengthInKbMb(String.valueOf(picObj.getMedia().length / (1024.0 * 1024.0)));
+            StringBuilder temp = new StringBuilder(baseUrl + "/data/get?id="+picObj.getId());
+            allImages.add(new ShortDescPhoto(picObj.getId(), picObj.getTitle(), picObj.getUploadTime(), picObj.getCategory(), picObj.getRating(), len, String.valueOf(temp)));
+        }
+        return new ResponseEntity<>(allImages.reversed(), HttpStatus.OK);
+    }
+
+    @GetMapping("/total")
+    ResponseEntity<?> total(){
+        List<PhotoEntry> allImagesObj = cloudStorageService.getAllPhotos();
+        Map<String, Long> map = new HashMap<>();
+        map.put("total images:", (long) allImagesObj.size());
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @GetMapping("/delete")
@@ -98,5 +120,15 @@ public class MongoController {
                     .body(p.getMedia());
         }
         return new ResponseEntity<>("Index is out of range", HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/get")
+    ResponseEntity<?> getImageById(@RequestParam String id){
+        PhotoEntry image = cloudStorageService.findPhotoById(id);
+        if(image != null)
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.valueOf("image/png"))
+                    .body(image.getMedia());
+        return new ResponseEntity<>("Invalid/Not found", HttpStatus.BAD_REQUEST);
     }
 }

@@ -1,0 +1,156 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  min-height: 4rem;
+}
+
+.hero {
+  border-radius: 50%;
+  margin-left: 4rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hero img {
+  height: 3.2rem;
+}
+
+.hero p {
+  margin-left: 0.8rem;
+  color: #ededed;
+  font-size: 1.5rem;
+}
+
+.menu_list {
+  margin-right: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.menu_list .tabOptions {
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: #ededed;
+  border: 1.5px solid rgba(0, 0, 125, 0);
+  border-radius: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  text-decoration: none;
+}
+
+.menu_list .tabOptions.active {
+    color: #f4d35e;
+}
+
+.menu_list .tabOptions:hover {
+  color: #a5a5a5;
+  border-radius: 2rem;
+}
+
+.menu_list .tabOptions.active:hover {
+  color: #f4d35e;
+  border-radius: 2rem;
+}
+
+.menuitems {
+  display: none;
+}
+
+.bar {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  nav {
+    position: relative;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .hero {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .hero p {
+    margin-left: 0.8rem;
+    color: #ededed;
+    font-size: 1.3rem;
+  }
+  
+  .menu_list {
+    display: none;
+  }
+  .bar img {
+    height: 1.7rem;
+    margin: 0;
+  }
+  .bar {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    transition: 0.1s ease;
+    transform: rotate(0deg);
+  }
+  .bar.active {
+    border-radius: 2rem;
+    transform: rotate(90deg);
+    transition: 0.1s ease;
+  }
+  .bar_icon {
+    font-size: 3rem;
+  }
+  .menuitems {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(27, 27, 27);
+    transform: translateX(0);
+    transition: 0.2s ease;
+    z-index: 999;
+  }
+  .menuitems.active {
+    transform: translateX(-100%);
+    transition: 0.2s ease;
+  }
+  .menuitems .tabOptions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    min-width: fit-content;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .closebtnn {
+    display: flex;
+    justify-content: end;
+    padding-top: 3.8rem;
+    padding-right: 2.7rem;
+    margin-bottom: 3rem;
+  }
+  
+  .closebtnn img {
+    height: 1.5rem;
+  }
+}

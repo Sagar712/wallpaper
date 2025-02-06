@@ -10,8 +10,8 @@ spring:
   data:
     mongodb:
 #      uri: "mongodb://User1:admin123@cluster0-shard-00-00.3i79s.mongodb.net:27017,cluster0-shard-00-01.3i79s.mongodb.net:27017,cluster0-shard-00-02.3i79s.mongodb.net:27017/?ssl=true&replicaSet=atlas-gzpzaf-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0"
-      uri: mongodb://hello:bye@localhost:27017 # For running in local machine
-#      uri: mongodb://hello:bye@mongodb:27017 # For running in Docker compose
+#      uri: mongodb://hello:bye@localhost:27017 # For running in local machine
+      uri: mongodb://hello:bye@mongodb:27017 # For running in Docker compose
       database: "media_library"
 #      auto-index-creation: true
 

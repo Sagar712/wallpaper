@@ -1,0 +1,22 @@
+.App {
+    text-align: center;
+    background-color: #121214;
+    overflow-x: hidden;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media screen and (max-width: 960px) {
+    .App {
+      padding-left: 0rem;
+      padding-right: 0rem;
+      padding-top: 1rem;
+    }
+  }
+  
